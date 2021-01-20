@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
 @RestController
 @RequestMapping("/payment")
 public class PaymentController {
@@ -39,6 +41,18 @@ public class PaymentController {
             return Result.error(400,"插入失败");
         }
 
+    }
+
+    @GetMapping("/timeout")
+    public Result<Payment> timeout(){
+
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return Result.ok(200,"3秒",new Payment());
     }
 
 }

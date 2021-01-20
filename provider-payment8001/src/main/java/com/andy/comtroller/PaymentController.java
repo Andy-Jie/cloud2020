@@ -4,6 +4,7 @@ import com.andy.entity.Payment;
 import com.andy.entity.Result;
 import com.andy.service.PaymentService;
 import com.andy.service.impl.PaymentServiceImpl;
+import org.omg.CORBA.TIMEOUT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -11,6 +12,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/payment")
@@ -24,6 +26,18 @@ public class PaymentController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @GetMapping("/timeout")
+    public Result<Payment> timeout(){
+
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return Result.ok(200,"5秒",new Payment());
+    }
 
     @GetMapping("/{id}")
     public Result<Payment> findOne(@PathVariable("id") Long id) {
