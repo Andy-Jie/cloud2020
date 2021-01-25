@@ -11,6 +11,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -77,6 +78,13 @@ public class PaymentController {
         });
 
         return discoveryClient;
+    }
+
+    public static void main(String[] args) {
+
+        ZonedDateTime now = ZonedDateTime.now();
+        System.out.println(now);
+
     }
 
 }
