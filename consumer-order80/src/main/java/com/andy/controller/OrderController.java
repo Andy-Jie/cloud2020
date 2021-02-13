@@ -16,6 +16,12 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @GetMapping("/zipkin")
+    public String paymentZipkin(){
+        String result = restTemplate.getForObject(URL+"/payment/zipkin",String.class);
+        return result;
+    }
+
     @GetMapping("/{id}")
     public Result findById(@PathVariable("id") Long id) {
         return restTemplate.getForObject(URL + "payment/" + id, Result.class, id);

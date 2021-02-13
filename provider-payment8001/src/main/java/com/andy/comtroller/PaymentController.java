@@ -28,6 +28,11 @@ public class PaymentController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @GetMapping("/zipkin")
+    public String zipkin(){
+        return "我是 zipkin";
+    }
+
     @GetMapping("/timeout")
     public Result<Payment> timeout(){
 
