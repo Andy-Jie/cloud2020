@@ -33,6 +33,13 @@
         <module>nacos-payment-provider9001</module>
         <module>nacos-payment-provider9002</module>
         <module>nacos-order-consumer83</module>
+        <module>config-nacos-client3377</module>
+        <module>sentinel-service8401</module>
+        <module>ali-provider-payment9001</module>
+        <module>ali-provider-payment9002</module>
+        <module>ali-consumer-nacos-order84</module>
+        <module>seata-order-service</module>
+        <module>seata-storage-service2003</module>
     </modules>
 
     <!-- 统一管理jar包版本 -->
@@ -46,6 +53,7 @@
         <project.version>1.0-SNAPSHOT</project.version>
         <hutool.version>5.1.0</hutool.version>
         <mybatis.plus.boot.version>3.3.2</mybatis.plus.boot.version>
+        <api.common.version>1.0-SNAPSHOT</api.common.version>
     </properties>
 
     <dependencyManagement>
